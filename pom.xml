@@ -32,26 +32,30 @@
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>
-        <!-- SpotBugs Static Analysis -->
-            <plugin>
-                <groupId>com.github.spotbugs</groupId>
-                <artifactId>spotbugs-maven-plugin</artifactId>
-                <version>3.1.1</version>
-                <configuration>
-                    <effort>Max</effort>
-                    <threshold>Low</threshold>
-					<debug>true</debug>
-				<visitors>TrustBoundaryViolationValueDetector,SqlInjectionDetector,PathTraversalDetector</visitors> 
-                    <xmlOutput>true</xmlOutput>
-                    <plugins>
-                        <plugin>
-                            <groupId>com.h3xstream.findsecbugs</groupId>
-                            <artifactId>findsecbugs-plugin</artifactId>
-                            <version>LATEST</version> <!-- Auto-update to the latest stable -->
-                        </plugin>
-                    </plugins>
-                </configuration>
-                <executions>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>findbugs-maven-plugin</artifactId>
+            <version>3.0.4</version>
+            <configuration>
+                <!--
+                    Enables analysis which takes more memory but finds more bugs.
+                    If you run out of memory, changes the value of the effort element
+                    to 'Low'.
+                -->
+                <effort>Max</effort>
+                <!-- Build doesn't fail if problems are found -->
+                <failOnError>false</failOnError>
+                <!-- Reports all bugs (other values are medium and max) -->
+                <threshold>Low</threshold>
+                <!-- Produces XML report -->
+                <xmlOutput>true</xmlOutput>
+                <!-- Configures the directory in which the XML report is created -->
+                <findbugsXmlOutputDirectory>${project.build.directory}/findbugs</findbugsXmlOutputDirectory>
+            </configuration>
+            <executions>
+                <!--
+                    Ensures that FindBugs inspects source code when project is compiled.
+                -->
                 <execution>
                     <id>analyze-compile</id>
                     <phase>compile</phase>
@@ -60,7 +64,7 @@
                     </goals>
                 </execution>
             </executions>
-            </plugin>
+        </plugin>
 			<plugin>
 				<groupId>org.codehaus.cargo</groupId>
 				<artifactId>cargo-maven2-plugin</artifactId>
