@@ -40,6 +40,9 @@
                 <configuration>
                     <effort>Max</effort>
                     <threshold>Low</threshold>
+                    <failOnError>true</failOnError>
+					<debug>true</debug>
+				<visitors>TrustBoundaryViolationValueDetector,SqlInjectionDetector,PathTraversalDetector</visitors> 
                     <xmlOutput>true</xmlOutput>
                     <plugins>
                         <plugin>
@@ -49,6 +52,15 @@
                         </plugin>
                     </plugins>
                 </configuration>
+                <executions>
+                <execution>
+                    <id>analyze-compile</id>
+                    <phase>compile</phase>
+                    <goals>
+                        <goal>check</goal>
+                    </goals>
+                </execution>
+            </executions>
             </plugin>
 			<plugin>
 				<groupId>org.codehaus.cargo</groupId>
