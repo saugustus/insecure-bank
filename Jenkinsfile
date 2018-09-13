@@ -1,9 +1,9 @@
 pipeline {
     agent any
     stages{
-        stage('Compile'){
+        stage('build'){
             steps {
-                bat 'mvn clean compile package'
+                sh 'mvn clean compile package'
             }
             post {
                 success {
