@@ -40,7 +40,6 @@
                 <configuration>
                     <effort>Max</effort>
                     <threshold>Low</threshold>
-                    <failOnError>true</failOnError>
 					<debug>true</debug>
 				<visitors>TrustBoundaryViolationValueDetector,SqlInjectionDetector,PathTraversalDetector</visitors> 
                     <xmlOutput>true</xmlOutput>
