@@ -1,18 +1,28 @@
 pipeline {
     agent any
+    
     stages{
-        stage('build'){
+     def mvnHome
+    stage('Preparation'){
+    mvnHome = tool 'localMaven'
+    }
+     
+    stage('Build and Scan'){
             steps {
-                sh 'mvn clean compile package'
-            }
+                bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean compile package/)
+                }
             post {
+            
+                fail{
+                    echo 'build fail'
+                }
                 success {
                     echo 'Now Archiving the war file...'
                     archiveArtifacts artifacts: '**/target/*.war'
                 }
             }
         }
-        stage ('deploy'){
+        stage ('Deploy'){
             steps {
                 build job: 'deploy-insecure-bank-app'
             }
