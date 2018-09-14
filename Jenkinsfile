@@ -27,7 +27,10 @@ pipeline {
 		{
 			steps 
 			{
-				bat (/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean compile package/)
+				// bat (/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean compile 
+                // package/)
+                
+                bat (mvn clean compile package)
 			}
 			post
 			{
