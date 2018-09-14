@@ -4,11 +4,13 @@ pipeline {
 	 
 	 stages
 	 { 
-		
 		stage('Preparation')
 		{
-		def mvnHome
-		mvnHome = tool 'M3'
+		  steps 
+           {
+              def mvnHome
+		      mvnHome = tool 'M3'
+            }
 		}
 		
 		stage('Build and Scan')
