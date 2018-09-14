@@ -21,7 +21,7 @@ pipeline {
 			}
 			post
 			{
-				fail
+				failure
 				{
 					echo 'build fail'
 				}
