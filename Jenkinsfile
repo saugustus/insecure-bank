@@ -7,10 +7,10 @@ pipeline {
          maven "M3"
     }
     
-    environment 
-    {
-         mvnHome = "C:\\Maven"
-    }
+   // environment 
+    //{
+      //   mvnHome = "C:\\Maven"
+    //}
 	 
 	 stages
 	 { 
