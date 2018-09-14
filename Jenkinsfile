@@ -1,17 +1,27 @@
 pipeline {
 	
 	agent any
+    
+    tools 
+    {
+        maven "MAVEN_HOME"
+    }
+    
+    environment 
+    {
+         mvnHome = "C:\Maven"
+    }
 	 
 	 stages
 	 { 
-		stage('Preparation')
-		{
-		  steps 
-           {
-              def mvnHome
-		      mvnHome = tool 'M3'
-            }
-		}
+		// stage('Preparation')
+		// {
+		  // steps 
+           // {
+            //  def mvnHome
+		      // mvnHome = tool 'M3'
+            // }
+		// }
 		
 		stage('Build and Scan')
 		{
