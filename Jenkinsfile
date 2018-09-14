@@ -9,7 +9,7 @@ pipeline {
     
     environment 
     {
-         mvnHome = "C:\Maven"
+         mvnHome = "C:\\Maven"
     }
 	 
 	 stages
