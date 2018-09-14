@@ -1,11 +1,11 @@
 pipeline {
     agent any
-    
+    node {
     stages{
     
     stage('Preparation'){
     def mvnHome
-    mvnHome = tool 'localMaven'
+    mvnHome = tool 'M3'
     }
      
     stage('Build and Scan'){
@@ -29,4 +29,6 @@ pipeline {
             }
         }
     }
+  }
+
 }
