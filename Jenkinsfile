@@ -4,7 +4,7 @@ pipeline {
     
     tools 
     {
-         maven "mvnHome"
+         maven "M3"
     }
     
     environment 
